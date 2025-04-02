@@ -41,7 +41,7 @@ npm start
 
 ## Uso
 
-1. Acesse a página inicial em `http://localhost:3000`
+1. Acesse a página inicial em `http://localhost:5000`
 2. Faça login com as credenciais de administrador
 3. Você pode:
    - Ver todas as perguntas
