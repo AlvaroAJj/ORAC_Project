@@ -1,0 +1,106 @@
+/* Estilos para a seção de Livros */
+.books-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 30px auto;
+    max-width: 1300px;
+    padding: 0 20px;
+    justify-content: center;
+}
+
+/* Container para a primeira linha (4 livros) */
+.books-top-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    gap: 60px; /* Aumento do espaçamento entre os livros */
+}
+
+/* Container para a segunda linha (3 livros) */
+.books-bottom-row {
+    display: flex;
+    width: 75%; /* Ajuste para o espaço de 3 livros */
+    justify-content: space-between;
+    margin-left: 0; /* Alinhado à esquerda conforme a imagem */
+    gap: 60px; /* Aumento do espaçamento entre os livros */
+}
+
+.book-card {
+    background-color: #101820;
+    border: 2px solid #d3a625;
+    border-radius: 8px;
+    padding: 20px 30px 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(25% - 45px); /* Ajustado para o novo gap */
+    max-width: 300px;
+}
+
+.books-bottom-row .book-card {
+    width: calc(33.33% - 45px); /* Ajustado para o novo gap */
+    max-width: 300px;
+}
+
+.book-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(211, 166, 37, 0.4);
+}
+
+.book-card img {
+    max-width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.book-card h3 {
+    color: #d3a625;
+    margin: 8px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.book-year {
+    color: #fff;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 1000px) {
+    .books-top-row, .books-bottom-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 45px; /* Espaçamento ajustado para telas menores */
+    }
+    
+    .books-bottom-row {
+        width: 100%;
+    }
+    
+    .book-card, .books-bottom-row .book-card {
+        width: calc(50% - 45px); /* Ajustado para o novo gap */
+        max-width: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .books-top-row, .books-bottom-row {
+        gap: 30px;
+    }
+    
+    .book-card, .books-bottom-row .book-card {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .book-card img {
+        height: 240px;
+    }
+} 

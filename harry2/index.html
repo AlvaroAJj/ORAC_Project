@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Potter - O Mundo da Magia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="books-style.css">
+</head>
+<body>
+    <!-- Navegação Superior -->
+    <nav class="top-nav">
+        <button class="nav-button" onclick="openForum()">Fórum</button>
+        <button class="nav-button" onclick="openLogin()">Login</button>
+    </nav>
+
+    <!-- Modal do Fórum -->
+    <div id="forumModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeForum()">&times;</span>
+            <h2 class="forum-title">Fórum de Perguntas e Respostas</h2>
+            <div id="questions-container">
+                <!-- As perguntas serão carregadas aqui -->
+            </div>
+            <div class="question-form">
+                <textarea id="newQuestion" placeholder="Faça sua pergunta sobre Harry Potter..."></textarea>
+                <button onclick="submitQuestion()" class="nav-button">Enviar Pergunta</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeLogin()">&times;</span>
+            <h2 class="login-title">Área do Administrador</h2>
+            <div class="login-form">
+                <input type="text" id="username" placeholder="Nome de usuário" class="login-input">
+                <input type="password" id="password" placeholder="Senha" class="login-input">
+                <button onclick="login()">Entrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão Home -->
+    <button id="homeButton" onclick="scrollToTop()">
+        <img src="harry_img/home.png" alt="Voltar ao topo">
+    </button>
+
+    <!-- Seção Inicial com os 8 Filmes -->
+    <header class="intro">
+        <h1>Preparado Para Conhecer Melhor o Mundo Dos Bruxos?</h1>
+        <h1>Explore o Mundo Mágico de Harry Potter</h1>
+        <p>Clique em um filme para ver mais detalhes!</p>
+        <div class="movie-grid">
+            <div class="movie" onclick="scrollToMovie('movie1')">
+                <img src="harry_img/hp1.jpg" alt="Harry Potter 1">
+            </div>
+            <div class="movie" onclick="scrollToMovie('movie2')">
+                <img src="harry_img/hp2.jpg" alt="Harry Potter 2">
+            </div>
+            <div class="movie" onclick="scrollToMovie('movie3')">
+                <img src="harry_img/hp3.jpg" alt="Harry Potter 3">
+            </div>
+            <div class="movie" onclick="scrollToMovie('movie4')">
+                <img src="harry_img/hp4.jpg" alt="Harry Potter 4">
+            </div>
+            <div class="movie" onclick="scrollToMovie('movie5')">
+                <img src="harry_img/hp5.jpg" alt="Harry Potter 5">
+            </div>
+            <div class="movie" onclick="scrollToMovie('movie6')">
+                <img src="harry_img/hp6.jpg" alt="Harry Potter 6">
+            </div>
+            <div class="movie" onclick="scrollToMovie('movie7')">
+                <img src="harry_img/hp7.jpg" alt="Harry Potter 7">
+            </div>
+            <div class="movie" onclick="scrollToMovie('movie8')">
+                <img src="harry_img/hp8.jpg" alt="Harry Potter 8">
+            </div>
+        </div>
+    </header>
+
+    <!-- Seções dos Filmes -->
+    <div class="movie-list">
+        <section id="movie1" class="container">
+            <div class="content">
+                <div class="poster">
+                    <img src="harry_img/hp1.jpg" alt="Harry Potter 1">
+                </div>
+                <div class="info">
+                    <h1>Harry Potter e a Pedra Filosofal</h1>
+                    <p>23 de novembro de 2001 no cinema</p>
+                    <p><strong>Direção:</strong> Chris Columbus | Roteiro Steve Kloves</p>
+                    <p><strong>Elenco:</strong> Daniel Radcliffe, Rupert Grint, Emma Watson</p>
+                    <p><strong>Duração:</strong> 2h 32min</p>
+                    <p><strong>Gênero:</strong> Aventura, Fantasia, Família</p>
+                    <div class="buttons-container">
+                        <button class="watch-btn">🎬 Assista Agora</button>
+                        <button class="question-btn" onclick="toggleQuestionForm('movie1')">❓ Faça uma Pergunta</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sinopse">
+                <h1>Sinopse</h1>
+                <p>Harry Potter (Daniel Radcliffe) é um garoto órfão de 10 anos que vive infeliz com seus
+                    tios, os Dursley. Até que, repentinamente, ele recebe uma carta contendo um convite para 
+                    ingressar em Hogwarts, uma famosa escola especializada em formar jovens bruxos. 
+                    Inicialmente Harry é impedido de ler a carta por seu tio Válter (Richard Griffiths),
+                     mas logo ele recebe a visita de Hagrid (Robbie Coltrane), o guarda-caça de Hogwarts,
+                    que chega em sua casa para levá-lo até a escola. A partir de então Harry passa a conhecer 
+                    um mundo mágico que jamais imaginara, vivendo as mais diversas aventuras com seus mais 
+                    novos amigos, Rony Weasley (Rupert Grint) e Hermione Granger (Emma Watson).</p>
+            </div>
+            <div id="questionForm1" class="question-form" style="display: none;">
+                <textarea id="questionContent1" placeholder="Sua pergunta sobre Harry Potter e a Pedra Filosofal..." required></textarea>
+                <button onclick="submitQuestion('Harry Potter e a Pedra Filosofal', 'questionContent1')" class="watch-btn">Enviar Pergunta</button>
+            </div>
+        </section>
+
+        <section id="movie2" class="container">
+            <div class="content">
+                <div class="poster">
+                    <img src="harry_img/hp2.jpg" alt="Harry Potter 2">
+                </div>
+                <div class="info">
+                    <h1>Harry Potter e a Câmara Secreta</h1>
+                    <p>22 de novembro de 2002 no cinema</p>
+                    <p><strong>Direção:</strong> Chris Columbus | Roteiro Steve Kloves</p>
+                    <p><strong>Elenco:</strong> Daniel Radcliffe, Rupert Grint, Emma Watson</p>
+                    <p><strong>Duração:</strong> 2h 38min</p>
+                    <p><strong>Gênero:</strong> Aventura, Fantasia, Família</p>
+                    <div class="buttons-container">
+                        <button class="watch-btn">🎬 Assista Agora</button>
+                        <button class="question-btn" onclick="toggleQuestionForm('movie2')">❓ Faça uma Pergunta</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sinopse">
+                <h1>Sinopse</h1>
+                <p>De férias na casa de seus tios Dursley, Harry Potter (Daniel Radcliffe) recebe a inesperada visita de 
+                    Dobby, um elfo doméstico, que veio avisá-lo para não retornar à Escola de Magia de Hogwarts,
+                    pois lá correrá um grande perigo. Harry não lhe dá ouvidos e decide retornar aos estudos,
+                    enfrentando um 2º ano recheado de novidades. Uma delas é a contratação do novo Professor de 
+                    Defesa Contra as Artes das Trevas, Gilderoy Lockhart (Kenneth Branagh), que é considerado um grande 
+                    galã e não perde uma oportunidade de fazer marketing pessoal. Porém, o aviso de Dobby se confirma e 
+                    logo toda Hogwarts está envolvida em um mistério que resulta no aparecimento de alunos petrificados.</p>
+            </div>
+            <div id="questionForm2" class="question-form" style="display: none;">
+                <textarea id="questionContent2" placeholder="Sua pergunta sobre Harry Potter e a Câmara Secreta..." required></textarea>
+                <button onclick="submitQuestion('Harry Potter e a Câmara Secreta', 'questionContent2')" class="watch-btn">Enviar Pergunta</button>
+            </div>
+        </section>
+
+        <section id="movie3" class="container">
+            <div class="content">
+                <div class="poster">
+                    <img src="harry_img/hp3.jpg" alt="Harry Potter 3">
+                </div>
+                <div class="info">
+                    <h1>Harry Potter e o Prisioneiro de Azkaban</h1>
+                    <p>4 de junho de 2004 no cinema</p>
+                    <p><strong>Direção:</strong> Alfonso Cuarón | Roteiro Steve Kloves</p>
+                    <p><strong>Elenco:</strong> Daniel Radcliffe, Rupert Grint, Emma Watson</p>
+                    <p><strong>Duração:</strong> 2h 21min</p>
+                    <p><strong>Gênero:</strong> Aventura, Fantasia</p>
+                    <div class="buttons-container">
+                        <button class="watch-btn">🎬 Assista Agora</button>
+                        <button class="question-btn" onclick="toggleQuestionForm('movie3')">❓ Faça uma Pergunta</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sinopse">
+                <h1>Sinopse</h1>
+                <p>O 3º ano de ensino na Escola de Magia e Bruxaria de Hogwarts se aproxima. Porém um grande perigo ronda 
+                    a escola: o assassino Sirius Black (Gary Oldman) fugiu da prisão de Azkaban, 
+                    considerada até então como à prova de fugas. Para proteger a escola são enviados os Dementadores, 
+                    estranhos seres que sugam a energia vital de quem se aproxima deles, que tanto podem defender a 
+                    escola como piorar ainda mais a situação.</p>
+            </div>
+            <div id="questionForm3" class="question-form" style="display: none;">
+                <textarea id="questionContent3" placeholder="Sua pergunta sobre Harry Potter e o Prisioneiro de Azkaban..." required></textarea>
+                <button onclick="submitQuestion('Harry Potter e o Prisioneiro de Azkaban', 'questionContent3')" class="watch-btn">Enviar Pergunta</button>
+            </div>
+        </section>
+
+        <section id="movie4" class="container">
+            <div class="content">
+                <div class="poster">
+                    <img src="harry_img/hp4.jpg" alt="Harry Potter 4">
+                </div>
+                <div class="info">
+                    <h1>Harry Potter e o Cálice de Fogo</h1>
+                    <p>25 de novembro de 2005 no cinema</p>
+                    <p><strong>Direção:</strong>Mike Newell | Roteiro Steve Kloves, J.K. Rowling</p>
+                    <p><strong>Elenco:</strong> Daniel Radcliffe, Emma Watson, Rupert Grint</p>
+                    <p><strong>Duração:</strong> 2h 37min</p>
+                    <p><strong>Gênero:</strong> Aventura, Fantasia</p>
+                    <div class="buttons-container">
+                        <button class="watch-btn">🎬 Assista Agora</button>
+                        <button class="question-btn" onclick="toggleQuestionForm('movie4')">❓ Faça uma Pergunta</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sinopse">
+                <h1>Sinopse</h1>
+                <p>Em seu 4º ano na Escola de Magia e Bruxaria de Hogwarts, Harry Potter (Daniel Radcliffe) é 
+                    misteriosamente selecionado para participar do Torneio Tribruxo, uma competição internacional
+                     em que precisará enfrentar alunos mais velhos e experientes de 
+                     Hogwarts e também de outras escolas de magia. Além disso a aparição da marca negra de Voldemort 
+                     (Ralph Fiennes) ao término da Copa do Mundo de Quadribol põe a comunidade de bruxos em pânico, já 
+                     que sinaliza que o temido bruxo está prestes a retornar.</p>
+            </div>
+            <div id="questionForm4" class="question-form" style="display: none;">
+                <textarea id="questionContent4" placeholder="Sua pergunta sobre Harry Potter e o Cálice de Fogo..." required></textarea>
+                <button onclick="submitQuestion('Harry Potter e o Cálice de Fogo', 'questionContent4')" class="watch-btn">Enviar Pergunta</button>
+            </div>
+        </section>
+
+        <section id="movie5" class="container">
+            <div class="content">
+                <div class="poster">
+                    <img src="harry_img/hp5.jpg" alt="Harry Potter 5">
+                </div>
+                <div class="info">
+                    <h1>Harry Potter e a Ordem da Fênix</h1>
+                    <p>11 de julho de 2007 no cinema</p>
+                    <p><strong>Direção:</strong> David Yates | Roteiro Michael Goldenberg</p>
+                    <p><strong>Elenco:</strong> Daniel Radcliffe, Rupert Grint, Emma Watson</p>
+                    <p><strong>Duração:</strong> 2h 18min</p>
+                    <p><strong>Gênero:</strong> Aventura, Fantasia</p>
+                    <div class="buttons-container">
+                        <button class="watch-btn">🎬 Assista Agora</button>
+                        <button class="question-btn" onclick="toggleQuestionForm('movie5')">❓ Faça uma Pergunta</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sinopse">
+                <h1>Sinopse</h1>
+                <p>Harry Potter (Daniel Radcliffe) retorna à Escola de Magia e Bruxaria de Hogwarts, para cursar o 5º ano letivo.
+                     Logo ele descobre que boa parte da comunidade bruxa foi levada a acreditar que o retorno de Voldemort
+                      (Ralph Fiennes) foi uma mentira inventada por Harry, o que põe sua credibilidade em dúvida. Além disto, 
+                      o Ministro da Magia Cornélio Fudge (Robert Hardy) impõe à escola a presença de Dolores Umbridge (Imelda Staunton), 
+                      que torna-se a nova professora de Defesa Contra as Artes das Trevas. Acontece que as aulas de Umbridge, apesar de 
+                      aprovadas pelo ministério, abrangem apenas temas amenos, deixando os alunos despreparados para os perigos dos dias 
+                      atuais. Incentivado por seus amigos Rony (Rupert Grint) e Hermione (Emma Watson), Harry decide encontrar-se em 
+                      segredo com um grupo de estudantes, visando a prática de magia. O grupo se autodenomina como a "Armada de 
+                      Dumbledore", mas logo passa a ser vista como uma ameaça ao próprio Ministério da Magia.</p>
+            </div>
+            <div id="questionForm5" class="question-form" style="display: none;">
+                <textarea id="questionContent5" placeholder="Sua pergunta sobre Harry Potter e a Ordem da Fênix..." required></textarea>
+                <button onclick="submitQuestion('Harry Potter e a Ordem da Fênix', 'questionContent5')" class="watch-btn">Enviar Pergunta</button>
+            </div>
+        </section>
+
+        <section id="movie6" class="container">
+            <div class="content">
+                <div class="poster">
+                    <img src="harry_img/hp6.jpg" alt="Harry Potter 6">
+                </div>
+                <div class="info">
+                    <h1>Harry Potter e o Enigma do Príncipe</h1>
+                    <p>15 de julho de 2009 no cinema</p>
+                    <p><strong>Direção:</strong> David Yates | Roteiro Steve Kloves</p>
+                    <p><strong>Elenco:</strong> Daniel Radcliffe, Rupert Grint, Emma Watson</p>
+                    <p><strong>Duração:</strong> 2h 33min</p>
+                    <p><strong>Gênero:</strong> Aventura, Fantasia</p>
+                    <div class="buttons-container">
+                        <button class="watch-btn">🎬 Assista Agora</button>
+                        <button class="question-btn" onclick="toggleQuestionForm('movie6')">❓ Faça uma Pergunta</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sinopse">
+                <h1>Sinopse</h1>
+                <p>Lorde Voldemort (Ralph Fiennes) é uma ameaça real, tanto para o mundo dos bruxos quanto o dos trouxas. 
+                    Harry Potter (Daniel Radcliffe) suspeita que o perigo esteja dentro da Escola de Magia e Bruxaria de 
+                    Hogwarts, mas Alvo Dumbledore (Michael Gambon) está mais preocupado em prepará-lo para o confronto 
+                    final com o Lorde das Trevas. Dumbledore convida seu colega Horácio Slughorn (Jim Broadbent) para 
+                    ser o novo professor de Poções, já que Severo Snape (Alan Rickman) enfim alcançou o sonho de 
+                    ministrar as aulas de Defesa Contra as Artes das Trevas. Paralelamente Harry começa a ter um 
+                    interesse cada vez maior por Gina Weasley (Bonnie Wright), irmã de seu melhor amigo Rony 
+                    (Rupert Grint), que também é alvo de interesse de Dino Thomas (Alfie Enoch).</p>
+            </div>
+            <div id="questionForm6" class="question-form" style="display: none;">
+                <textarea id="questionContent6" placeholder="Sua pergunta sobre Harry Potter e o Enigma do Príncipe..." required></textarea>
+                <button onclick="submitQuestion('Harry Potter e o Enigma do Príncipe', 'questionContent6')" class="watch-btn">Enviar Pergunta</button>
+            </div>
+        </section>
+
+        <section id="movie7" class="container">
+            <div class="content">
+                <div class="poster">
+                    <img src="harry_img/hp7.jpg" alt="Harry Potter 7">
+                </div>
+                <div class="info">
+                    <h1>Harry Potter e as Relíquias da Morte - Parte 1</h1>
+                    <p>19 de novembro de 2010 no cinema</p>
+                    <p><strong>Direção:</strong> David Yates | Roteiro Steve Kloves</p>
+                    <p><strong>Elenco:</strong> Daniel Radcliffe, Rupert Grint, Emma Watson</p>
+                    <p><strong>Duração:</strong> 2h 26min</p>
+                    <p><strong>Gênero:</strong> Aventura, Fantasia</p>
+                    <div class="buttons-container">
+                        <button class="watch-btn">🎬 Assista Agora</button>
+                        <button class="question-btn" onclick="toggleQuestionForm('movie7')">❓ Faça uma Pergunta</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sinopse">
+                <h1>Sinopse</h1>
+                <p>Prestes a completar 17 anos, Harry Potter (Daniel Radcliffe) precisa ser transportado da casa dos seus
+                     tios, os Dursley, até um local seguro. Lorde Voldemort (Ralph Fiennes) e seus comensais da morte 
+                     sabem que a transferência está prestes a acontecer e aguardam sua realização para atacar. Para que 
+                     ela ocorra vários amigos de Harry, como Rony Weasley (Rupert Grint), Hermione Granger (Emma Watson), 
+                     Remo Lupin (David Thewlis), Hagrid (Robbie Coltrane) e "Olho-Tonto" Moody (Brendan Gleeson), tomam a 
+                     Poção Polissuco e assumem a forma física de Harry. A intenção é despistar Voldemort sobre quem é o 
+                     Harry verdadeiro, de forma que ele possa chegar seguro à Toca, casa dos Weasley. A missão é bem 
+                     sucedida, mas logo a situação se torna ainda mais perigosa. O Ministro da Magia Rufus Scrimgeour 
+                     (Bill Nighy) é morto e, em seu lugar, assume um dos asseclas de Voldemort. Harry e seus amigos 
+                     passam a ser caçados impiedosamente, obrigando que ele, Rony e Hermione fujam. Precisando mudar 
+                     constantemente de lugar, eles elaboram um plano para encontrar e destruir as horcruxes que podem 
+                     eliminar Voldemort de uma vez por todas.</p>
+            </div>
+            <div id="questionForm7" class="question-form" style="display: none;">
+                <textarea id="questionContent7" placeholder="Sua pergunta sobre Harry Potter e as Relíquias da Morte - Parte 1..." required></textarea>
+                <button onclick="submitQuestion('Harry Potter e as Relíquias da Morte - Parte 1', 'questionContent7')" class="watch-btn">Enviar Pergunta</button>
+            </div>
+        </section>
+
+        <section id="movie8" class="container">
+            <div class="content">
+                <div class="poster">
+                    <img src="harry_img/hp8.jpg" alt="Harry Potter 8">
+                </div>
+                <div class="info">
+                    <h1>Harry Potter e as Relíquias da Morte - Parte 2</h1>
+                    <p>15 de julho de 2011 no cinema</p>
+                    <p><strong>Direção:</strong> David Yates | Roteiro Steve Kloves</p>
+                    <p><strong>Elenco:</strong> Daniel Radcliffe, Rupert Grint, Emma Watson</p>
+                    <p><strong>Duração:</strong> 2h 32min</p>
+                    <p><strong>Gênero:</strong> Aventura, Fantasia</p>
+                    <div class="buttons-container">
+                        <button class="watch-btn">🎬 Assista Agora</button>
+                        <button class="question-btn" onclick="toggleQuestionForm('movie8')">❓ Faça uma Pergunta</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sinopse">
+                <h1>Sinopse</h1>
+                <p>Em Harry Potter e as Relíquias da Morte - Parte 2, Harry Potter (Daniel Radcliffe) e seus amigos Rony 
+                    Weasley (Rupert Grint) e Hermione Granger (Emma Watson) seguem à procura das horcruxes. O objetivo 
+                    do trio é encontrá-las e, em seguida, destruí-las, de forma a eliminar lorde Voldemort (Ralph Fiennes)
+                     de uma vez por todas. Com a ajuda do duende Grampo (Warwick Davis), eles entram no banco Gringotes 
+                     de forma a invadir o cofre de Bellatrix Lestrange (Helena Bonham Carter). De lá retornam ao castelo 
+                     de Hogwarts, onde precisam encontrar mais uma horcrux. Paralelamente, Voldemort prepara o ataque 
+                     definitivo ao castelo.</p>
+            </div>
+            <div id="questionForm8" class="question-form" style="display: none;">
+                <textarea id="questionContent8" placeholder="Sua pergunta sobre Harry Potter e as Relíquias da Morte - Parte 2..." required></textarea>
+                <button onclick="submitQuestion('Harry Potter e as Relíquias da Morte - Parte 2', 'questionContent8')" class="watch-btn">Enviar Pergunta</button>
+            </div>
+        </section>
+
+        <!-- Adicione os outros 6 filmes aqui seguindo o mesmo padrão -->
+    </div>
+
+    <!-- Seção de Personagens Principais -->
+    <div class="section-dark">
+        <h1 class="section-title">Personagens Principais</h1>
+        <div class="characters-grid">
+            <div class="character-card">
+                <img src="harry_img/harry.jpg" alt="Harry Potter">
+                <h3>Harry Potter</h3>
+                <p>O menino que sobreviveu</p>
+            </div>
+            <div class="character-card">
+                <img src="harry_img/ron.jpg" alt="Rony Weasley">
+                <h3>Rony Weasley</h3>
+                <p>O melhor amigo de Harry</p>
+            </div>
+            <div class="character-card">
+                <img src="harry_img/hermione.jpg" alt="Hermione Granger">
+                <h3>Hermione Granger</h3>
+                <p>A bruxa mais inteligente de sua geração</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de Casas de Hogwarts -->
+    <h1 class="section-title">Casas de Hogwarts</h1>
+    <div class="houses-grid">
+        <div class="house-card">
+            <img src="harry_img/grifinoria.png" alt="Grifinória">
+            <h3>Grifinória</h3>
+            <p>Coragem, bravura e determinação</p>
+        </div>
+        <div class="house-card">
+            <img src="harry_img/sonserina.png" alt="Sonserina">
+            <h3>Sonserina</h3>
+            <p>Astúcia, liderança e ambição</p>
+        </div>
+        <div class="house-card">
+            <img src="harry_img/corvinal.webp" alt="Corvinal">
+            <h3>Corvinal</h3>
+            <p>Inteligência, criatividade e aprendizado</p>
+        </div>
+        <div class="house-card">
+            <img src="harry_img/lufalufa.webp" alt="Lufa-Lufa">
+            <h3>Lufa-Lufa</h3>
+            <p>Dedicação, lealdade e justiça</p>
+        </div>
+    </div>
+
+    <!-- Seção de Livros -->
+    <div class="section-dark">
+        <h1 class="section-title">Livros</h1>
+        <div class="books-grid">
+            <div class="books-top-row">
+                <div class="book-card">
+                    <img src="harry_img/livro1.jpg" alt="Harry Potter e a Pedra Filosofal">
+                    <h3>Harry Potter e a Pedra Filosofal</h3>
+                    <p class="book-year">1997</p>
+                </div>
+                <div class="book-card">
+                    <img src="harry_img/livro2.jpg" alt="Harry Potter e a Câmara Secreta">
+                    <h3>Harry Potter e a Câmara Secreta</h3>
+                    <p class="book-year">1998</p>
+                </div>
+                <div class="book-card">
+                    <img src="harry_img/livro3.jpg" alt="Harry Potter e o Prisioneiro de Azkaban">
+                    <h3>Harry Potter e o Prisioneiro de Azkaban</h3>
+                    <p class="book-year">1999</p>
+                </div>
+                <div class="book-card">
+                    <img src="harry_img/livro4.jpg" alt="Harry Potter e o Cálice de Fogo">
+                    <h3>Harry Potter e o Cálice de Fogo</h3>
+                    <p class="book-year">2000</p>
+                </div>
+            </div>
+            
+            <div class="books-bottom-row">
+                <div class="book-card">
+                    <img src="harry_img/livro5.jpg" alt="Harry Potter e a Ordem da Fênix">
+                    <h3>Harry Potter e a Ordem da Fênix</h3>
+                    <p class="book-year">2003</p>
+                </div>
+                <div class="book-card">
+                    <img src="harry_img/livro6.jpg" alt="Harry Potter e o Enigma do Príncipe">
+                    <h3>Harry Potter e o Enigma do Príncipe</h3>
+                    <p class="book-year">2005</p>
+                </div>
+                <div class="book-card">
+                    <img src="harry_img/livro7.jpg" alt="Harry Potter e as Relíquias da Morte">
+                    <h3>Harry Potter e as Relíquias da Morte</h3>
+                    <p class="book-year">2007</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
